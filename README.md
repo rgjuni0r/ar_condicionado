@@ -26,7 +26,7 @@ Projeto Arduino que monitora e coleta dados de temperatura e umidade do ambiente
 # Conclusão
 Esse projeto oferece uma solução prática e automatizada para manter o ambiente em uma temperatura agradável, economizando energia ao ligar o ar condicionado apenas quando necessário. A adição do display e do controle de dispositivos adicionais aumenta a utilidade e versatilidade do sistema.
 
-# Autor
+# Sobre o Autor
 - Desenvolvido por Rogério Moreira Alves Júnior.
 - Possui expertise avançada em linguagens de programação, destacando-se em C, C++, Python e Java, e demonstra aptidão em análises numéricas com Octave e MatLab. No domínio do desenvolvimento web, tem proficiência em JavaScript, HTML e CSS. Em relação às ferramentas, apresenta domínio em Excel Avançado e VBA, evidenciando suas capacidades analíticas e de automação. Sua familiaridade com Arduino atesta competência em automação eletrônica, e sua destreza em AutoCAD e SOLIDWORKS sublinha habilidades em modelagem e design técnico na engenharia.
 
