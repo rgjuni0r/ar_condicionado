@@ -46,12 +46,13 @@ Este projeto foi desenvolvido por AnalysIR e tem o propósito de contornar uma l
 - Veja os timings brutos exibidos.
   
 - Dicas:
-Conexões:
-Receptor IR:
-V+ -> +5v
-GND -> GND
-Sinal de Saída -> Pino 2
-Se você estiver usando um Arduino 3V3, conecte o V+ ao +3V3.
+• Conexões:
+• Receptor IR:
+• V+ -> +5v
+• GND -> GND
+• Sinal de Saída -> Pino 2
+
+• Se você estiver usando um Arduino 3V3, conecte o V+ ao +3V3.
 
 4. Contribuições e Licença:
 Este software foi escrito por AnalysIR. O uso é gratuito, sujeito às condições postadas no blog de AnalysIR. Ao usar este código, dê crédito ao AnalysIR e forneça um link para o blog deles, se possível. Mais detalhes sobre a licença podem ser encontrados no link fornecido no código.
