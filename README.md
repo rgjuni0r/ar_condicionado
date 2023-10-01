@@ -26,6 +26,36 @@ Projeto Arduino que monitora e coleta dados de temperatura e umidade do ambiente
 # Conclusão
 Esse projeto oferece uma solução prática e automatizada para manter o ambiente em uma temperatura agradável, economizando energia ao ligar o ar condicionado apenas quando necessário. A adição do display e do controle de dispositivos adicionais aumenta a utilidade e versatilidade do sistema.
 
+# Long IR Signal Recorder com Arduino
+Este projeto foi desenvolvido por AnalysIR e tem o propósito de contornar uma limitação comum em bibliotecas Arduino IR. Ele permite capturar timings brutos de sinais IR mais longos do que 255 marcas e espaços, tornando-se particularmente útil para sinais longos, como aqueles usados por condicionadores de ar.
+
+1. Descrição Geral:
+- Pino LED (13): Um indicador visual que mostra quando um sinal foi recebido.
+- Buffer de Armazenamento: Um array irBuffer é usado para armazenar os timings. Ele tem uma capacidade máxima definida como maxLen, que é atualmente 800.
+- Pino do Receptor IR (2): O sinal de saída do receptor IR é conectado ao pino 2, mas outros pinos também podem ser usados, dependendo do Arduino em questão.
+
+2. Funcionamento:
+- Início: Ao ligar, o Arduino se coloca em modo de espera e pede que o usuário pressione um botão do controle remoto.
+- Recepção do Sinal: Quando o sinal IR é detectado, ele começa a armazenar as transições de sinal em irBuffer usando uma Interrupção de Serviço (ISR).
+- Exibição: Após a captura, o programa irá exibir os timings no Serial Monitor em um formato cru.
+
+3. Uso:
+- Compile e carregue o código no seu Arduino.
+- Abra o Serial Monitor com uma taxa de transmissão (BAUD rate) de 115200.
+- Siga as instruções no Serial Monitor e pressione o botão do controle remoto.
+- Veja os timings brutos exibidos.
+  
+- Dicas:
+Conexões:
+Receptor IR:
+V+ -> +5v
+GND -> GND
+Sinal de Saída -> Pino 2
+Se você estiver usando um Arduino 3V3, conecte o V+ ao +3V3.
+
+4. Contribuições e Licença:
+Este software foi escrito por AnalysIR. O uso é gratuito, sujeito às condições postadas no blog de AnalysIR. Ao usar este código, dê crédito ao AnalysIR e forneça um link para o blog deles, se possível. Mais detalhes sobre a licença podem ser encontrados no link fornecido no código.
+
 # Sobre o Autor
 - Desenvolvido por Rogério Moreira Alves Júnior.
 - Possui expertise avançada em linguagens de programação, destacando-se em C, C++, Python e Java, e demonstra aptidão em análises numéricas com Octave e MatLab. No domínio do desenvolvimento web, tem proficiência em JavaScript, HTML e CSS. Em relação às ferramentas, apresenta domínio em Excel Avançado e VBA, evidenciando suas capacidades analíticas e de automação. Sua familiaridade com Arduino atesta competência em automação eletrônica, e sua destreza em AutoCAD e SOLIDWORKS sublinha habilidades em modelagem e design técnico na engenharia.
