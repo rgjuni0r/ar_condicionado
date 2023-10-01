@@ -93,22 +93,12 @@ void loop() {
   lcd.print(t);
   delay(3000);
 
-  // LEITURA INICIAL
-  while (inicio == true) {
-    if (t <= 18.00) {  // DESLIGAR AR
+  // Se for a primeira vez que o sistema está rodando, queremos ignorar a lógica para evitar enviar comandos desnecessários.
+  if (inicio) {
+    if (t <= 18 && !desligar_ar) {
       desligar_ar = true;
       ligar_ar = false;
-    } else {
-      desligar_ar = false;
-      ligar_ar = true;
-    }
 
-    inicio = false;
-  }
-
-
-  if (t <= 18.00) {
-    if (desligar_ar == true) {
       lcd.clear();
       delay(500);
       lcd.setCursor(0, 0);
@@ -131,14 +121,10 @@ void loop() {
       Serial.println("Ar condicionado DESLIGADO!");
 
       delay(3500);  // Pausa entre os sinais
-      desligar_ar = false;
+    } else {
       ligar_ar = true;
-    }
-  }
+      desligar_ar = false;
 
-
-  if ((t <= 26.00) || (t > 26.00)) {
-    if (ligar_ar == true) {
       lcd.clear();
       delay(500);
       lcd.setCursor(0, 0);
@@ -162,8 +148,60 @@ void loop() {
       Serial.println("Ar condicionado LIGADO!");
 
       delay(3500);  // Pausa entre os sinais
+    }
+    inicio = false;
+  } else {
+    if (t <= 18 && !desligar_ar) {
+      lcd.clear();
+      delay(500);
+      lcd.setCursor(0, 0);
+      lcd.print(" Desligando Ar");
+      delay(500);
+      lcd.setCursor(0, 1);
+      lcd.print(" Condicionado!");
+      delay(1500);
+
+      // DESLIGANDO AR CONDICIONADO
+      emissorIR.sendRaw(teclaD, sizeof(teclaD) / sizeof(teclaD[0]), frequencia);
+
+      delay(500);
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      lcd.print("Ar Condicionado");
+      delay(500);
+      lcd.setCursor(0, 1);
+      lcd.print("   Desligado!");
+      Serial.println("Ar condicionado DESLIGADO!");
+
+      delay(3500);  // Pausa entre os sinais
       desligar_ar = true;
       ligar_ar = false;
+    } else if (t >= 26 && !ligar_ar) {
+      lcd.clear();
+      delay(500);
+      lcd.setCursor(0, 0);
+      lcd.print("  Ligando Ar");
+      delay(500);
+      lcd.setCursor(0, 1);
+      lcd.print(" Condicionado!");
+      Serial.println("Ligando Ar condicionado!");
+      delay(1500);
+
+      // LIGANDO AR CONDICIONADO
+      emissorIR.sendRaw(teclaC, sizeof(teclaC) / sizeof(teclaC[0]), frequencia);
+
+      delay(500);
+      lcd.clear();
+      lcd.setCursor(0, 0);
+      lcd.print("Ar Condicionado");
+      delay(500);
+      lcd.setCursor(0, 1);
+      lcd.print("    Ligado!");
+      Serial.println("Ar condicionado LIGADO!");
+
+      delay(3500);  // Pausa entre os sinais
+      desligar_ar = false;
+      ligar_ar = true;
     }
   }
 
